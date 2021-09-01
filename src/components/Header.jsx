@@ -21,7 +21,7 @@ const TopBar = styled.div`
   align-items: center;
   justify-content: center;
   box-shadow: 0px 2px 4px 2px rgba(0, 0, 0, 0.1);
-
+  top: 0px;
 
   h1 {
     font-family: 'Roboto';
