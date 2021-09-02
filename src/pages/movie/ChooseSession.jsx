@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Footer from '../../components/Footer';
 
@@ -10,12 +11,16 @@ export default function ChooseSession() {
           <h2>Selecione o horário</h2>
         </SubTitle>
         <SessionsList>
+
           <SessionInfo>
             <p>Quinta-feira - 24/06/2021</p>
-            <Times>
-              <button type="button">15:00</button>
-              <button type="button">19:00</button>
-            </Times>
+            <Link to="/sessao/2">
+              <Times>
+                <button type="button">15:00</button>
+                <button type="button">19:00</button>
+              </Times>
+            </Link>
+
           </SessionInfo>
           <SessionInfo>
             <p>Sexta-feira - 25/06/2021</p>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export default function Homepage() {
@@ -9,9 +10,11 @@ export default function Homepage() {
         <h2>Selecione o filme</h2>
       </SubTitle>
       <MoviesList>
-        <Movie>
-          <div />
-        </Movie>
+        <Link to="/filme/3">
+          <Movie>
+            <div />
+          </Movie>
+        </Link>
       </MoviesList>
     </Background>
 
