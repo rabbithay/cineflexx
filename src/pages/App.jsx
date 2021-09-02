@@ -5,6 +5,7 @@ import ChooseSession from './movie/ChooseSession';
 import GlobalStyles from '../utils/GlobalStyles';
 import ChooseSeat from './session/ChooseSeat';
 import Header from '../components/Header';
+import TicketDetails from './success/TicketDetails';
 
 function App() {
   return (
@@ -21,7 +22,9 @@ function App() {
         <Route path="/sessao/:sessaoId" exact>
           <ChooseSeat />
         </Route>
-        <Route path="/sucesso" exact />
+        <Route path="/sucesso" exact>
+          <TicketDetails />
+        </Route>
       </Switch>
     </Router>
   );
