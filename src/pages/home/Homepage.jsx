@@ -1,8 +1,21 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
+import MovieBox from './MovieBox';
 
 export default function Homepage() {
+  const [movieList, setMovieList] = useState([]);
+
+  useEffect(() => {
+    try {
+      axios.get('https://mock-api.bootcamp.respondeai.com.br/api/v3/cineflex/movies').then((req) => {
+        setMovieList(req.data);
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
+
   return (
 
     <Background>
@@ -10,11 +23,7 @@ export default function Homepage() {
         <h2>Selecione o filme</h2>
       </SubTitle>
       <MoviesList>
-        <Link to="/filme/3">
-          <Movie>
-            <div />
-          </Movie>
-        </Link>
+        {movieList.map((m) => <MovieBox movie={m} />)}
       </MoviesList>
     </Background>
 
@@ -45,18 +54,7 @@ const SubTitle = styled.div`
 const MoviesList = styled.div`
   width: 100%;
   height: auto;
-`;
+  display: flex;
+  flex-wrap: wrap;
 
-const Movie = styled.div`
-  width: 129px;
-  height: 193px;
-  padding: 8px;
-  box-shadow: 0px 2px 4px 2px rgba(0, 0, 0, 0.1);
-  border-radius: 3px;
-  div {
-    width: 100%;
-    height: 100%;
-    background-color: #e94692;
-
-  }
 `;
