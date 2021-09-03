@@ -1,37 +1,67 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useParams, Link } from 'react-router-dom';
+import axios from 'axios';
+
 import styled from 'styled-components';
-import Footer from '../../components/Footer';
 
 export default function ChooseSession() {
+  const { movieId } = useParams();
+
+  const [sessionList, setSessionList] = useState([]);
+  // const [movieName, setMovieName] = useState();
+  // const [movieImage, setMovieImage] = useState();
+
+  useEffect(() => {
+    try {
+      axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v3/cineflex/movies/${movieId}/showtimes`).then((req) => {
+        setSessionList(req.data.days);
+        // setMovieName(req.data.title);
+        // setMovieImage(req.data.posterURL);
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
+
   return (
     <>
       <Background>
         <SubTitle>
           <h2>Selecione o horário</h2>
         </SubTitle>
+
         <SessionsList>
 
-          <SessionInfo>
-            <p>Quinta-feira - 24/06/2021</p>
-            <Link to="/sessao/2">
-              <Times>
-                <button type="button">15:00</button>
-                <button type="button">19:00</button>
-              </Times>
-            </Link>
+          {sessionList.map((day) => {
+            const { weekday, date, showtimes } = day;
 
-          </SessionInfo>
-          <SessionInfo>
-            <p>Sexta-feira - 25/06/2021</p>
-            <Times>
-              <button type="button">15:00</button>
-              <button type="button">19:00</button>
-            </Times>
-          </SessionInfo>
+            return (
+              <SessionInfo>
+                <p>
+                  {weekday}
+                  {' '}
+                  -
+                  {' '}
+                  {date}
+                </p>
+                <Times>
+                  {showtimes.map((time) => {
+                    const { id, name } = time;
+
+                    return (
+                      <Link to={`/sessao/${id}`}>
+                        <button type="button">{name}</button>
+                      </Link>
+                    );
+                  })}
+                </Times>
+
+              </SessionInfo>
+            );
+          })}
+
         </SessionsList>
       </Background>
-      <Footer />
     </>
 
   );
@@ -78,7 +108,6 @@ const Times = styled.div`
         background-color: #fb76b5;
         border-radius: 3px;
         margin: 22px 8px 23px 0px;
-        font-size: 18px;
-        
+        font-size: 18px;        
     }
 `;
