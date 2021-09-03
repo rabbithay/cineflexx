@@ -19,7 +19,7 @@ function App() {
         <Route path="/filme/:movieId" exact>
           <ChooseSession />
         </Route>
-        <Route path="/sessao/:sessaoId" exact>
+        <Route path="/sessao/:sessionId" exact>
           <ChooseSeat />
         </Route>
         <Route path="/sucesso" exact>

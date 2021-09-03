@@ -44,18 +44,18 @@ export default function ChooseSession() {
                   {' '}
                   {date}
                 </p>
+                <Times>
+                  {showtimes.map((time) => {
+                    const { id, name } = time;
 
-                {showtimes.map((time) => {
-                  const { id, name } = time;
-
-                  return (
-                    <Link to={`/sessao/${id}`}>
-                      <Times>
+                    return (
+                      <Link to={`/sessao/${id}`}>
                         <button type="button">{name}</button>
-                      </Times>
-                    </Link>
-                  );
-                })}
+                      </Link>
+                    );
+                  })}
+                </Times>
+
               </SessionInfo>
             );
           })}
@@ -108,7 +108,6 @@ const Times = styled.div`
         background-color: #fb76b5;
         border-radius: 3px;
         margin: 22px 8px 23px 0px;
-        font-size: 18px;
-        
+        font-size: 18px;        
     }
 `;
