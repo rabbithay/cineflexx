@@ -8,15 +8,11 @@ export default function ChooseSession() {
   const { movieId } = useParams();
 
   const [sessionList, setSessionList] = useState([]);
-  // const [movieName, setMovieName] = useState();
-  // const [movieImage, setMovieImage] = useState();
 
   useEffect(() => {
     try {
       axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v3/cineflex/movies/${movieId}/showtimes`).then((req) => {
         setSessionList(req.data.days);
-        // setMovieName(req.data.title);
-        // setMovieImage(req.data.posterURL);
       });
     } catch (error) {
       console.log(error);
