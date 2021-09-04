@@ -1,23 +1,76 @@
+/* eslint-disable no-unused-expressions */
 /* eslint-disable no-nested-ternary */
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-// import Footer from '../../components/Footer';
+import Footer from '../../components/Footer';
 
-export default function ChooseSeat() {
+export default function ChooseSeat({ setSeatsRequest }) {
   const { sessionId } = useParams();
   const [seatList, setSeatList] = useState([]);
+  const [movieTitle, setMovieTitle] = useState();
+  const [movieDay, setMovieDay] = useState();
+  const [movieImage, setMovieImage] = useState();
+  const [movieTime, setMovieTime] = useState();
+
+  // const [currentMovie, setCurrentMovie] = useState()
+  const [userName, setUserName] = useState('');
+  const [userCPF, setUserCPF] = useState('');
+  const [movieDate, setMovieDate] = useState();
 
   useEffect(() => {
     try {
-      axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v2/cineflex/showtimes/${sessionId}/seats`).then((req) => {
+      axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v3/cineflex/showtimes/${sessionId}/seats`).then((req) => {
         setSeatList(req.data.seats.map((v) => ({ ...v, isSelected: false })));
+        setMovieTitle(req.data.movie.title);
+        setMovieDay(req.data.day.weekday);
+        setMovieImage(req.data.movie.posterURL);
+        setMovieTime(req.data.name);
+        setMovieDate(req.data.day.date);
       });
     } catch (error) {
       console.log(error);
     }
   }, []);
+
+  function SelectSeat(id) {
+    const seats = seatList.map((seat) => {
+      if (seat.id === id && seat.isAvailable) {
+        // eslint-disable-next-line no-param-reassign
+        seat.isSelected = !seat.isSelected;
+      }
+      return seat;
+    });
+    setSeatList(seats);
+  }
+
+  function ReserveSeats() {
+    const selectedSeats = [];
+    const selectedNumbers = [];
+    seatList.forEach((s) => {
+      if (s.isSelected) {
+        selectedSeats.push(s.id);
+        selectedNumbers.push(s.name);
+      }
+    });
+
+    const seatsRequest = {
+      ids: selectedSeats,
+      name: userName,
+      cpf: userCPF,
+    };
+
+    axios.post('https://mock-api.bootcamp.respondeai.com.br/api/v3/cineflex/seats/book-many', seatsRequest);
+
+    setSeatsRequest({
+      ...seatsRequest,
+      title: movieTitle,
+      time: movieTime,
+      date: movieDate,
+      numbers: selectedNumbers,
+    });
+  }
   return (
     <>
       <Background>
@@ -26,11 +79,14 @@ export default function ChooseSeat() {
         </SubTitle>
         <SeatsList>
           {seatList.map((seat) => {
-            const { name, isAvailable, isSelected } = seat;
+            const {
+              id, name, isAvailable, isSelected,
+            } = seat;
             return (
               <Seat
                 isAvailable={isAvailable}
                 isSelected={isSelected}
+                onClick={() => { (isAvailable) ? SelectSeat(id) : alert('Esse assento não está disponível!'); }}
               >
                 {name}
 
@@ -64,15 +120,20 @@ export default function ChooseSeat() {
           </div>
         </Label>
 
-        <BuyerInfo onSubmit={() => alert()}>
+        <BuyerInfo onSubmit={() => ReserveSeats()}>
           {/* <p>Nome do comprador:</p> */}
-          <input type="text" placeholder="Digite seu nome..." />
+          <input type="text" placeholder="Digite seu nome..." value={userName} onChange={(e) => { setUserName(e.target.value); }} />
           {/* <p>CPF do comprador:</p> */}
-          <input type="text" placeholder="Digite seu CPF..." />
+          <input type="text" placeholder="Digite seu CPF..." value={userCPF} onChange={(e) => { setUserCPF(e.target.value); }} />
           <ConfirmButton type="submit">Reservar assento(s)</ConfirmButton>
         </BuyerInfo>
       </Background>
-      {/* <Footer /> */}
+      <Footer
+        movieTitle={movieTitle}
+        movieDay={movieDay}
+        movieImage={movieImage}
+        movieTime={movieTime}
+      />
     </>
 
   );

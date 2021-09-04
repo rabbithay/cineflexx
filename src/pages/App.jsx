@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Homepage from './home/Homepage';
 import ChooseSession from './movie/ChooseSession';
@@ -8,6 +8,8 @@ import Header from '../components/Header';
 import TicketDetails from './success/TicketDetails';
 
 function App() {
+  const [seatsRequest, setSeatsRequest] = useState();
+
   return (
     <Router>
       <GlobalStyles />
@@ -20,10 +22,10 @@ function App() {
           <ChooseSession />
         </Route>
         <Route path="/sessao/:sessionId" exact>
-          <ChooseSeat />
+          <ChooseSeat setSeatsRequest={setSeatsRequest} />
         </Route>
         <Route path="/sucesso" exact>
-          <TicketDetails />
+          <TicketDetails seatsRequest={seatsRequest} />
         </Route>
       </Switch>
     </Router>
