@@ -45,7 +45,8 @@ export default function ChooseSeat({ setSeatsRequest }) {
     setSeatList(seats);
   }
 
-  function ReserveSeats() {
+  function ReserveSeats(event) {
+    event.preventDefault();
     const selectedSeats = [];
     const selectedNumbers = [];
     seatList.forEach((s) => {
@@ -60,8 +61,11 @@ export default function ChooseSeat({ setSeatsRequest }) {
       name: userName,
       cpf: userCPF,
     };
-
-    axios.post('https://mock-api.bootcamp.respondeai.com.br/api/v3/cineflex/seats/book-many', seatsRequest);
+    try {
+      axios.post('https://mock-api.bootcamp.respondeai.com.br/api/v3/cineflex/seats/book-many', seatsRequest);
+    } catch (error) {
+      console.log(error);
+    }
 
     setSeatsRequest({
       ...seatsRequest,
@@ -120,7 +124,7 @@ export default function ChooseSeat({ setSeatsRequest }) {
           </div>
         </Label>
 
-        <BuyerInfo onSubmit={() => ReserveSeats()}>
+        <BuyerInfo onSubmit={(event) => ReserveSeats(event)}>
           {/* <p>Nome do comprador:</p> */}
           <input type="text" placeholder="Digite seu nome..." value={userName} onChange={(e) => { setUserName(e.target.value); }} />
           {/* <p>CPF do comprador:</p> */}
