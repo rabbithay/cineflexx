@@ -7,7 +7,7 @@ export default function Header() {
     <TopBar>
       <Link to="/">
         <h1>
-          CINEFLEX
+          Cineflex
         </h1>
       </Link>
     </TopBar>
@@ -17,7 +17,7 @@ export default function Header() {
 const TopBar = styled.div`
   width: 100%;
   height: 67px;
-  background-color: #1d1c26;
+  background-color: #e94692;
   position: fixed;
   z-index: 3;
   display: flex;
@@ -27,8 +27,8 @@ const TopBar = styled.div`
   top: 0px;
 
   h1 {
-    font-family: 'Roboto';
-    font-size: 34px;
-    color: #ffd47b;
+    font-family: 'Zilla Slab';
+    font-size: 40px;
+    color: #fff;
   }
 `;
