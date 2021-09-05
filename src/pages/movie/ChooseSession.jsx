@@ -3,8 +3,9 @@ import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
 
 import styled from 'styled-components';
+import Footer from '../../components/Footer';
 
-export default function ChooseSession() {
+export default function ChooseSession({ currentMovie, setCurrentMovie }) {
   const { movieId } = useParams();
 
   const [sessionList, setSessionList] = useState([]);
@@ -13,6 +14,10 @@ export default function ChooseSession() {
     try {
       axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v3/cineflex/movies/${movieId}/showtimes`).then((req) => {
         setSessionList(req.data.days);
+        setCurrentMovie({
+          title: req.data.title,
+          image: req.data.posterURL,
+        });
       });
     } catch (error) {
       console.log(error);
@@ -30,7 +35,6 @@ export default function ChooseSession() {
 
           {sessionList.map((day) => {
             const { weekday, date, showtimes } = day;
-
             return (
               <SessionInfo>
                 <p>
@@ -58,6 +62,7 @@ export default function ChooseSession() {
 
         </SessionsList>
       </Background>
+      <Footer currentMovie={currentMovie} />
     </>
 
   );
