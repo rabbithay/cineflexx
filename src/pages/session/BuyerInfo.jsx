@@ -95,12 +95,11 @@ const ConfirmButton = styled.button`
     margin-top: 30px;
     font-weight: 500;
     .disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-:active {
-  transform: translateX(1px);
-
-  transform: translateY(1px);
-}
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+    :active {
+      transform: translateX(1px);
+      transform: translateY(1px);
+    }
 `;

@@ -17,7 +17,6 @@ export default function Homepage() {
   }, []);
 
   return (
-
     <Background>
       <SubTitle>
         <h2>Selecione o filme</h2>
@@ -26,7 +25,6 @@ export default function Homepage() {
         {movieList.map((m) => <MovieBox movie={m} />)}
       </MoviesList>
     </Background>
-
   );
 }
 
@@ -36,7 +34,7 @@ const Background = styled.div`
   height: 100%;
   min-height: 100vh;
   padding: 67px 25px 40px 30px;
-  font-family: 'Roboto';
+  font-family: 'Roboto Condensed';
 `;
 
 const SubTitle = styled.div`
@@ -56,5 +54,4 @@ const MoviesList = styled.div`
   height: auto;
   display: flex;
   flex-wrap: wrap;
-
 `;
