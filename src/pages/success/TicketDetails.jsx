@@ -2,7 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-export default function TicketDetails() {
+export default function TicketDetails({ seatsRequest }) {
+  const {
+    numbers, name, cpf, title, time, date,
+  } = seatsRequest;
+
   return (
     <Background>
       <SubTitle>
@@ -11,23 +15,32 @@ export default function TicketDetails() {
       </SubTitle>
       <InfoTitle>Filme e sessão</InfoTitle>
       <InfoDescription>
-        Enola Holmes
+        {title}
         {' '}
         <br />
-        24/06/2021 15:00
+        {date}
+        {' '}
+        {time}
       </InfoDescription>
       <InfoTitle>Ingressos</InfoTitle>
-      <InfoDescription>
-        Assento 15
-        <br />
-        Assento 16
-      </InfoDescription>
+      {numbers.map((i) => (
+        <InfoDescription>
+          Assento
+          {' '}
+          {i}
+        </InfoDescription>
+      ))}
+
       <InfoTitle>Comprador</InfoTitle>
       <InfoDescription>
-        Nome: João da Silva Sauro
+        Nome:
+        {' '}
+        {name}
         {' '}
         <br />
-        CPF: 123.456.789-10
+        CPF:
+        {' '}
+        {cpf}
       </InfoDescription>
       <Link to="/">
         <ConfirmButton type="submit">Voltar pra Home</ConfirmButton>
@@ -42,7 +55,7 @@ const Background = styled.div`
     height: 100%;
     min-height: 100vh;
     padding: 67px 24px 40px 24px;
-    font-family: 'Roboto';
+    font-family: 'Roboto Condensed';
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -61,21 +74,20 @@ const SubTitle = styled.div`
     }
 `;
 const InfoTitle = styled.p`
-width: 100%;
-font-weight: bold;
-font-size: 24px;
-line-height: 28px;
-letter-spacing: 0.04em;
-margin-top: 40px;
-color: #293845;
+    width: 100%;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 28px;
+    letter-spacing: 0.04em;
+    margin-top: 40px;
+    color: #293845;
 `;
 const InfoDescription = styled.p`
-width: 100%;
-
-font-size: 22px;
-line-height: 26px;
-letter-spacing: 0.04em;
-color: #293845;
+    width: 100%;
+    font-size: 22px;
+    line-height: 26px;
+    letter-spacing: 0.04em;
+    color: #293845;
 `;
 const ConfirmButton = styled.button`
     width: 225px;
