@@ -29,7 +29,7 @@ export default function BuyerInfo({ seatList, setSeatsRequest, currentMovie }) {
     try {
       axios.post('https://mock-api.bootcamp.respondeai.com.br/api/v3/cineflex/seats/book-many', seatsRequest);
     } catch (error) {
-      return console.log(error);
+      console.log(error);
     }
 
     setSeatsRequest({

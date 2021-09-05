@@ -9,6 +9,7 @@ import TicketDetails from './success/TicketDetails';
 
 function App() {
   const [seatsRequest, setSeatsRequest] = useState();
+  const [currentMovie, setCurrentMovie] = useState({});
 
   return (
     <Router>
@@ -19,10 +20,17 @@ function App() {
           <Homepage />
         </Route>
         <Route path="/filme/:movieId" exact>
-          <ChooseSession />
+          <ChooseSession
+            currentMovie={currentMovie}
+            setCurrentMovie={setCurrentMovie}
+          />
         </Route>
         <Route path="/sessao/:sessionId" exact>
-          <ChooseSeat setSeatsRequest={setSeatsRequest} />
+          <ChooseSeat
+            setSeatsRequest={setSeatsRequest}
+            currentMovie={currentMovie}
+            setCurrentMovie={setCurrentMovie}
+          />
         </Route>
         <Route path="/sucesso" exact>
           <TicketDetails seatsRequest={seatsRequest} />

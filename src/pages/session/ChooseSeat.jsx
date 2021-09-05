@@ -9,19 +9,23 @@ import Seat from './Seat';
 import SeatLabel from './SeatLabel';
 import BuyerInfo from './BuyerInfo';
 
-export default function ChooseSeat({ setSeatsRequest }) {
+export default function ChooseSeat({ setSeatsRequest, currentMovie, setCurrentMovie }) {
   const { sessionId } = useParams();
   const [seatList, setSeatList] = useState([]);
-  const [currentMovie, setCurrentMovie] = useState({});
 
   useEffect(() => {
     try {
       axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v3/cineflex/showtimes/${sessionId}/seats`).then((req) => {
         setSeatList(req.data.seats.map((v) => ({ ...v, isSelected: false })));
         setCurrentMovie({
-          title: req.data.movie.title,
-          day: req.data.day.weekday,
-          image: req.data.movie.posterURL,
+          ...currentMovie,
+          weekday: req.data.day.weekday,
+          time: req.data.name,
+          date: req.data.day.date,
+        });
+        console.log({
+          ...currentMovie,
+          weekday: req.data.day.weekday,
           time: req.data.name,
           date: req.data.day.date,
         });
