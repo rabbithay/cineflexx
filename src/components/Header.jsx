@@ -1,9 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import { TiArrowBack } from 'react-icons/ti';
 
 export default function Header() {
+  const history = useHistory();
+
   return (
     <TopBar>
       <div />
@@ -15,6 +17,7 @@ export default function Header() {
       <TiArrowBack
         color="#fff"
         size="32px"
+        onClick={history.goBack}
       />
     </TopBar>
   );
