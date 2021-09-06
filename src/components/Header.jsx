@@ -1,11 +1,11 @@
 import React from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import { TiArrowBack } from 'react-icons/ti';
 
 export default function Header() {
   const history = useHistory();
-
+  const location = useLocation();
   return (
     <TopBar>
       <div />
@@ -14,11 +14,14 @@ export default function Header() {
           Cineflex
         </h1>
       </Link>
-      <TiArrowBack
-        color="#fff"
-        size="32px"
-        onClick={history.goBack}
-      />
+      {(location.pathname === '/') ? <div /> : (
+        <TiArrowBack
+          color="#fff"
+          size="32px"
+          onClick={history.goBack}
+        />
+      )}
+
     </TopBar>
   );
 }
@@ -39,6 +42,9 @@ const TopBar = styled.div`
     font-family: 'Zilla Slab';
     font-size: 40px;
     color: #fff;
+  }
+  .div{
+    width: 32px;
   }
 
 `;

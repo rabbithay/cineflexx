@@ -12,6 +12,7 @@ import BuyerInfo from './BuyerInfo';
 export default function ChooseSeat({ setSeatsRequest, currentMovie, setCurrentMovie }) {
   const { sessionId } = useParams();
   const [seatList, setSeatList] = useState([]);
+  const [selectedSeats, setSelectedSeats] = useState([]);
 
   useEffect(() => {
     try {
@@ -55,6 +56,8 @@ export default function ChooseSeat({ setSeatsRequest, currentMovie, setCurrentMo
           seatList={seatList}
           setSeatsRequest={setSeatsRequest}
           currentMovie={currentMovie}
+          selectedSeats={selectedSeats}
+          setSelectedSeas={setSelectedSeats}
         />
       </Background>
 
