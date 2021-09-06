@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
 import axios from 'axios';
 import MovieBox from './MovieBox';
+import { Background, SubTitle, MoviesList } from '../styledComponents';
 
 export default function Homepage() {
   const [movieList, setMovieList] = useState([]);
@@ -27,33 +27,3 @@ export default function Homepage() {
     </Background>
   );
 }
-
-const Background = styled.div`
-  background-color: #fafaf6;
-  width: 100%;
-  height: 100%;
-  min-height: 100vh;
-  padding: 67px 25px 40px 30px;
-  font-family: 'Roboto Condensed';
-`;
-
-const SubTitle = styled.div`
-  width: 100%;
-  height: 110px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  h2 {
-    color: #0e0e13;
-    font-size: 24px;
-  }
-`;
-
-const MoviesList = styled.div`
-  width: 100%;
-  height: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-`;
