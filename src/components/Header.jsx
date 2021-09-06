@@ -43,8 +43,4 @@ const TopBar = styled.div`
     font-size: 40px;
     color: #fff;
   }
-  .div{
-    width: 32px;
-  }
-
 `;

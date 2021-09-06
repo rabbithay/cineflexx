@@ -1,8 +1,8 @@
 /* eslint-disable no-nested-ternary */
 import React, { useState } from 'react';
-import styled from 'styled-components';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
+import { Form, ConfirmButton } from '../styledComponents';
 
 export default function BuyerInfo({
   seatList, setSeatsRequest, currentMovie,
@@ -53,55 +53,3 @@ export default function BuyerInfo({
     </Form>
   );
 }
-const Form = styled.form`
-    width: 100%;
-    height: auto;
-    margin-top: 42px;
-    color: #0e0e13;
-    font-size: 18px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    p{
-        font-size: 18px;
-        margin-top: 7px;
-        width: 100%;
-        color: #fff8fd;
-
-    }
-    input{
-        width:calc(100vw - 48px);
-        height: 51px;
-        border: 1px solid #D5D5D5;
-        border-radius: 5px;
-        padding-left: 18px;
-        display: flex;
-        align-items: center;
-        font-size: 18px;
-        margin-top: 15px;
-
-        ::placeholder {
-            color: #46455b;
-            font-style: italic;
-        }
-    }
-   
-`;
-const ConfirmButton = styled.button`
-    width: 225px;
-    height: 42px;
-    background-color: #e94692;
-    border-radius: 5px;
-    color: #fff;
-    font-size: 18px;
-    margin-top: 30px;
-    font-weight: 500;
-    .disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-    }
-    :active {
-      transform: translateX(1px);
-      transform: translateY(1px);
-    }
-`;

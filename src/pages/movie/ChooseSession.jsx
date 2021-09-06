@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
 
-import styled from 'styled-components';
+import {
+  Background, SubTitle, SessionsList, Times,
+} from '../styledComponents';
 import Footer from '../../components/Footer';
 
 export default function ChooseSession({ currentMovie, setCurrentMovie }) {
@@ -36,7 +38,7 @@ export default function ChooseSession({ currentMovie, setCurrentMovie }) {
           {sessionList.map((day) => {
             const { weekday, date, showtimes } = day;
             return (
-              <SessionInfo>
+              <>
                 <p>
                   {weekday}
                   {' '}
@@ -55,8 +57,7 @@ export default function ChooseSession({ currentMovie, setCurrentMovie }) {
                     );
                   })}
                 </Times>
-
-              </SessionInfo>
+              </>
             );
           })}
 
@@ -67,48 +68,3 @@ export default function ChooseSession({ currentMovie, setCurrentMovie }) {
 
   );
 }
-
-const Background = styled.div`
-    background-color: #fafaf6;
-    width: 100%;
-    height: 100%;
-    min-height: 100vh;
-    padding: 67px 25px 40px 30px;
-    font-family: 'Roboto Condensed';
-`;
-
-const SubTitle = styled.div`
-    width: 100%;
-    height: 110px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    h2 {
-        color: #0e0e13;
-        font-size: 24px;
-    }
-`;
-
-const SessionsList = styled.div`
-    width: 100%;
-    height: auto;
-`;
-
-const SessionInfo = styled.div`
-    p{
-        font-size: 20px;
-        color: #030313;
-    }
-`;
-
-const Times = styled.div`
-   display: flex;
-   button {
-        width: 83px;
-        height: 43px;
-        background-color: #fb76b5;
-        border-radius: 3px;
-        margin: 22px 8px 23px 0px;
-        font-size: 18px;        
-    }
-`;
