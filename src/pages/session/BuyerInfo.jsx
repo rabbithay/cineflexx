@@ -4,7 +4,9 @@ import styled from 'styled-components';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 
-export default function BuyerInfo({ seatList, setSeatsRequest, currentMovie }) {
+export default function BuyerInfo({
+  seatList, setSeatsRequest, currentMovie,
+}) {
   const { title, time, date } = currentMovie;
   const history = useHistory();
   const [userName, setUserName] = useState('');

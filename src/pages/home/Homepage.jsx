@@ -53,5 +53,7 @@ const MoviesList = styled.div`
   width: 100%;
   height: auto;
   display: flex;
+  align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
 `;

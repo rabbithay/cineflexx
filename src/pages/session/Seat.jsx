@@ -8,7 +8,7 @@ export default function Seat({ setSeatList, seat, seatList }) {
   } = seat;
 
   function SelectSeat() {
-    const seats = seatList.map((s) => {
+    const seats = seatList.filter((s) => {
       if (s.id === id && s.isAvailable) {
         // eslint-disable-next-line no-param-reassign
         s.isSelected = !s.isSelected;
