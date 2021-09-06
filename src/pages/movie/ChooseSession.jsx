@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
-
 import {
-  Background, SubTitle, SessionsList, Times,
+  Background, SubTitle, SessionsList,
 } from '../styledComponents';
 import Footer from '../../components/Footer';
+import Session from './Session';
 
 export default function ChooseSession({ currentMovie, setCurrentMovie }) {
   const { movieId } = useParams();
-
   const [sessionList, setSessionList] = useState([]);
 
   useEffect(() => {
@@ -32,39 +31,13 @@ export default function ChooseSession({ currentMovie, setCurrentMovie }) {
         <SubTitle>
           <h2>Selecione o horário</h2>
         </SubTitle>
-
         <SessionsList>
-
-          {sessionList.map((day) => {
-            const { weekday, date, showtimes } = day;
-            return (
-              <>
-                <p>
-                  {weekday}
-                  {' '}
-                  -
-                  {' '}
-                  {date}
-                </p>
-                <Times>
-                  {showtimes.map((time) => {
-                    const { id, name } = time;
-
-                    return (
-                      <Link to={`/sessao/${id}`}>
-                        <button type="button">{name}</button>
-                      </Link>
-                    );
-                  })}
-                </Times>
-              </>
-            );
-          })}
-
+          {sessionList.map((day) => (
+            <Session day={day} />
+          ))}
         </SessionsList>
       </Background>
       <Footer currentMovie={currentMovie} />
     </>
-
   );
 }

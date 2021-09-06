@@ -23,7 +23,6 @@ export default function Seat({ setSeatList, seat, seatList }) {
       onClick={() => ((isAvailable) ? SelectSeat(id) : alert('Esse assento não está disponível!'))}
     >
       {name}
-
     </SeatBox>
   );
 }

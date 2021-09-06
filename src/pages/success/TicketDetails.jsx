@@ -34,7 +34,6 @@ export default function TicketDetails({ seatsRequest }) {
           {i}
         </InfoDescription>
       ))}
-
       <InfoTitle>Comprador</InfoTitle>
       <InfoDescription>
         Nome:
@@ -49,7 +48,6 @@ export default function TicketDetails({ seatsRequest }) {
       <Link to="/">
         <ConfirmButton type="submit">Voltar pra Home</ConfirmButton>
       </Link>
-
     </Background>
   );
 }

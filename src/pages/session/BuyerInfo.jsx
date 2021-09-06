@@ -1,4 +1,3 @@
-/* eslint-disable no-nested-ternary */
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
@@ -22,7 +21,6 @@ export default function BuyerInfo({
         selectedNumbers.push(s.name);
       }
     });
-
     const seatsRequest = {
       ids: selectedSeats,
       name: userName,
@@ -33,7 +31,6 @@ export default function BuyerInfo({
     } catch (error) {
       console.log(error);
     }
-
     setSeatsRequest({
       ...seatsRequest,
       title,
@@ -45,9 +42,7 @@ export default function BuyerInfo({
   }
   return (
     <Form onSubmit={(event) => ReserveSeats(event)}>
-      {/* <p>Nome do comprador:</p> */}
       <input type="text" placeholder="Digite seu nome..." value={userName} onChange={(e) => { setUserName(e.target.value); }} />
-      {/* <p>CPF do comprador:</p> */}
       <input type="text" placeholder="Digite seu CPF..." value={userCPF} onChange={(e) => { setUserCPF(e.target.value); }} />
       <ConfirmButton type="submit">Reservar assento(s)</ConfirmButton>
     </Form>

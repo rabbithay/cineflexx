@@ -24,12 +24,6 @@ export default function ChooseSeat({ setSeatsRequest, currentMovie, setCurrentMo
           time: req.data.name,
           date: req.data.day.date,
         });
-        console.log({
-          ...currentMovie,
-          weekday: req.data.day.weekday,
-          time: req.data.name,
-          date: req.data.day.date,
-        });
       });
     } catch (error) {
       console.log(error);
@@ -60,7 +54,6 @@ export default function ChooseSeat({ setSeatsRequest, currentMovie, setCurrentMo
           setSelectedSeas={setSelectedSeats}
         />
       </Background>
-
       <Footer
         currentMovie={currentMovie}
       />

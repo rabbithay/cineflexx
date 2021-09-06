@@ -16,6 +16,7 @@ export default function Footer({ currentMovie }) {
       >
         <img alt="movie poster" src={image} />
       </Movie>
+
       <div>
         <p>
           {title}
