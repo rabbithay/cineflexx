@@ -1,70 +1,88 @@
-# Getting Started with Create React App
+# Cineflex
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align="center">
+  <img src="public/pipoca.ico" width="175" alt="cineflex" />
+</p>
 
-## Available Scripts
+## About
 
-In the project directory, you can run:
+Cineflex is a web application designed to reserve seats in a cinema.
 
-### `npm start`
+You can choose the movie you want to watch and the session time you prefer. When choosing the session, you will see the list and arrangement of seats, organized by color between available and unavailable.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+It is not allowed to select unavailable seats. After selecting the seats you want, you need to fill in your personal information before proceeding to the next page.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Your reservation's review page will list the seats you've chosen and your personal information you've provided, which you'll need to show to confirm your identity when you go to see the movie.
 
-### `npm test`
+Good movie session!
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+(the app was designed for mobile, for a better experience, access from a cell phone)
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<!-- ## Preview
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+um gif da aplicação bem maneiro -->
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+## Deployment
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+<p align="center"><a  href="http://cineflex-three.vercel.app"> cineflex-three.vercel.app /</a></p>
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Features 
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- [x] choose the movie you want to watch
+- [x] choose your preferred session time
+- [x] view the list and seating arrangement
+- [x] seats arranged by color: unavailable, available and selected
+- [x] select desired seats
+- [x] set the reservation with your personal information
+- [x] review reservation: list of selected seats and personal information
+- [x] dark theme (prettier and more comfortable)
+- [ ] buyer information by seat
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## How to run 
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+# Clone this repository
+$ git clone <https://github.com/rabbithay/cineflexx.git>
 
-### Code Splitting
+# Access the project folder cmd/terminal
+$ cd cineflex
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+# Install the dependencies
+$ npm install
 
-### Analyzing the Bundle Size
+# Compile the code
+$ npm run build
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+# Run the application 
+$ npm start
 
-### Making a Progressive Web App
+# The server will automatically start at localhost:3000/ on your favorite browser 
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Tech Stack
 
-### Advanced Configuration
+<p align="center">
+<img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" />
+<img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" />
+<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" />
+<img src="https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white" />
+<img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
+<img src="https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white" />
+<img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" />
+<img alt="eslint" src="https://img.shields.io/badge/eslint-3A33D1?style=for-the-badge&logo=eslint&logoColor=white" />
+</p>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+  
+## Contact
 
-### Deployment
+<p align="center">
+<a href="https://www.linkedin.com/in/thayan%C3%A1-coelho/"><img src="https://img.shields.io/badge/linkedin-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a>
+<a href="mailto:thay.csb@gmail.com"><img src="https://img.shields.io/badge/gmail-D14836?&style=for-the-badge&logo=gmail&logoColor=white"/></a>
+</p>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<!-- ### Acknowledgements
+ -->
