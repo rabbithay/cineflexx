@@ -49,7 +49,7 @@ um gif da aplicação bem maneiro -->
 $ git clone <https://github.com/rabbithay/cineflexx.git>
 
 # Access the project folder cmd/terminal
-$ cd cineflex
+$ cd cineflexx
 
 # Install the dependencies
 $ npm install
